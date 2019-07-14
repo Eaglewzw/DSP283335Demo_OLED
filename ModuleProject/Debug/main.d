@@ -32,6 +32,10 @@ main.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.3.LTS/include/stdlib.h
 main.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.3.LTS/include/linkage.h
 main.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.3.LTS/include/stdlibf.h
 main.obj: G:/Programma\ \ Design/DSP/ModuleProject/APP/LED/LED.h
+main.obj: G:/Programma\ \ Design/DSP/ModuleProject/APP/MPU6050/mpu6050.h
+main.obj: G:/Programma\ \ Design/DSP/ModuleProject/APP/MPU6050/mpuiic.h
+main.obj: G:/Programma\ \ Design/DSP/ModuleProject/APP/MPU6050/eMPL/inv_mpu.h
+main.obj: G:/Programma\ \ Design/DSP/ModuleProject/APP/MPU6050/eMPL/inv_mpu_dmp_motion_driver.h
 
 ../main.c: 
 G:/Programma\ \ Design/DSP/ModuleProject/APP/SPIOLED/SPIOLED.h: 
@@ -65,3 +69,7 @@ C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.3.LTS/include/stdlib.h:
 C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.3.LTS/include/linkage.h: 
 C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_16.9.3.LTS/include/stdlibf.h: 
 G:/Programma\ \ Design/DSP/ModuleProject/APP/LED/LED.h: 
+G:/Programma\ \ Design/DSP/ModuleProject/APP/MPU6050/mpu6050.h: 
+G:/Programma\ \ Design/DSP/ModuleProject/APP/MPU6050/mpuiic.h: 
+G:/Programma\ \ Design/DSP/ModuleProject/APP/MPU6050/eMPL/inv_mpu.h: 
+G:/Programma\ \ Design/DSP/ModuleProject/APP/MPU6050/eMPL/inv_mpu_dmp_motion_driver.h: 

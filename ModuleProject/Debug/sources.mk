@@ -113,6 +113,8 @@ PDE_DEPS__QUOTED :=
 SUBDIRS := \
 . \
 APP/LED \
+APP/MPU6050/eMPL \
+APP/MPU6050 \
 APP/Public \
 APP/SPIOLED \
 DSP2833x_common/source \

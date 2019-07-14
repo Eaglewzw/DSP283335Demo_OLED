@@ -15,3 +15,15 @@ void delay(Uint16 time)                     //ÑÓÊ±º¯Êý
         asm(" nop");
     }
 }
+
+void  delay_ms(unsigned int nDelay)
+{
+    int ii,jj,kk=0;
+    for ( ii=0;ii<nDelay;ii++ )
+    {
+        for ( jj=0;jj<512;jj++ )
+        {
+            kk++;
+        }
+    }
+}

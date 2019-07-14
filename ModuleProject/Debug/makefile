@@ -12,6 +12,10 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./main.obj" \
 "./APP/LED/LED.obj" \
+"./APP/MPU6050/eMPL/inv_mpu.obj" \
+"./APP/MPU6050/eMPL/inv_mpu_dmp_motion_driver.obj" \
+"./APP/MPU6050/mpu6050.obj" \
+"./APP/MPU6050/mpuiic.obj" \
 "./APP/Public/public.obj" \
 "./APP/SPIOLED/SPIOLED.obj" \
 "./DSP2833x_common/source/DSP2833x_ADC_cal.obj" \
@@ -39,7 +43,7 @@ ORDERED_OBJS += \
 "./DSP2833x_common/source/DSP2833x_Xintf.obj" \
 "./DSP2833x_common/source/DSP2833x_usDelay.obj" \
 "./DSP2833x_headers/source/DSP2833x_GlobalVariableDefs.obj" \
-"../28335_RAM_lnk.cmd" \
+"../F28335.cmd" \
 "../DSP2833x_headers/cmd/DSP2833x_Headers_nonBIOS.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
@@ -53,6 +57,8 @@ RMDIR := RMDIR /S/Q
 -include sources.mk
 -include subdir_vars.mk
 -include APP/LED/subdir_vars.mk
+-include APP/MPU6050/eMPL/subdir_vars.mk
+-include APP/MPU6050/subdir_vars.mk
 -include APP/Public/subdir_vars.mk
 -include APP/SPIOLED/subdir_vars.mk
 -include DSP2833x_common/source/subdir_vars.mk
@@ -60,6 +66,8 @@ RMDIR := RMDIR /S/Q
 -include DSP2833x_headers/source/subdir_vars.mk
 -include subdir_rules.mk
 -include APP/LED/subdir_rules.mk
+-include APP/MPU6050/eMPL/subdir_rules.mk
+-include APP/MPU6050/subdir_rules.mk
 -include APP/Public/subdir_rules.mk
 -include APP/SPIOLED/subdir_rules.mk
 -include DSP2833x_common/source/subdir_rules.mk
@@ -194,9 +202,9 @@ ModuleProject.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" "APP\LED\LED.obj" "APP\Public\public.obj" "APP\SPIOLED\SPIOLED.obj" "DSP2833x_common\source\DSP2833x_ADC_cal.obj" "DSP2833x_common\source\DSP2833x_Adc.obj" "DSP2833x_common\source\DSP2833x_CSMPasswords.obj" "DSP2833x_common\source\DSP2833x_CodeStartBranch.obj" "DSP2833x_common\source\DSP2833x_CpuTimers.obj" "DSP2833x_common\source\DSP2833x_DBGIER.obj" "DSP2833x_common\source\DSP2833x_DMA.obj" "DSP2833x_common\source\DSP2833x_DefaultIsr.obj" "DSP2833x_common\source\DSP2833x_DisInt.obj" "DSP2833x_common\source\DSP2833x_ECan.obj" "DSP2833x_common\source\DSP2833x_ECap.obj" "DSP2833x_common\source\DSP2833x_EPwm.obj" "DSP2833x_common\source\DSP2833x_EQep.obj" "DSP2833x_common\source\DSP2833x_Gpio.obj" "DSP2833x_common\source\DSP2833x_I2C.obj" "DSP2833x_common\source\DSP2833x_Mcbsp.obj" "DSP2833x_common\source\DSP2833x_MemCopy.obj" "DSP2833x_common\source\DSP2833x_PieCtrl.obj" "DSP2833x_common\source\DSP2833x_PieVect.obj" "DSP2833x_common\source\DSP2833x_Sci.obj" "DSP2833x_common\source\DSP2833x_Spi.obj" 
-	-$(RM) "DSP2833x_common\source\DSP2833x_SysCtrl.obj" "DSP2833x_common\source\DSP2833x_Xintf.obj" "DSP2833x_common\source\DSP2833x_usDelay.obj" "DSP2833x_headers\source\DSP2833x_GlobalVariableDefs.obj" 
-	-$(RM) "main.d" "APP\LED\LED.d" "APP\Public\public.d" "APP\SPIOLED\SPIOLED.d" "DSP2833x_common\source\DSP2833x_Adc.d" "DSP2833x_common\source\DSP2833x_CpuTimers.d" "DSP2833x_common\source\DSP2833x_DMA.d" "DSP2833x_common\source\DSP2833x_DefaultIsr.d" "DSP2833x_common\source\DSP2833x_ECan.d" "DSP2833x_common\source\DSP2833x_ECap.d" "DSP2833x_common\source\DSP2833x_EPwm.d" "DSP2833x_common\source\DSP2833x_EQep.d" "DSP2833x_common\source\DSP2833x_Gpio.d" "DSP2833x_common\source\DSP2833x_I2C.d" "DSP2833x_common\source\DSP2833x_Mcbsp.d" "DSP2833x_common\source\DSP2833x_MemCopy.d" "DSP2833x_common\source\DSP2833x_PieCtrl.d" "DSP2833x_common\source\DSP2833x_PieVect.d" "DSP2833x_common\source\DSP2833x_Sci.d" "DSP2833x_common\source\DSP2833x_Spi.d" "DSP2833x_common\source\DSP2833x_SysCtrl.d" "DSP2833x_common\source\DSP2833x_Xintf.d" "DSP2833x_headers\source\DSP2833x_GlobalVariableDefs.d" 
+	-$(RM) "main.obj" "APP\LED\LED.obj" "APP\MPU6050\eMPL\inv_mpu.obj" "APP\MPU6050\eMPL\inv_mpu_dmp_motion_driver.obj" "APP\MPU6050\mpu6050.obj" "APP\MPU6050\mpuiic.obj" "APP\Public\public.obj" "APP\SPIOLED\SPIOLED.obj" "DSP2833x_common\source\DSP2833x_ADC_cal.obj" "DSP2833x_common\source\DSP2833x_Adc.obj" "DSP2833x_common\source\DSP2833x_CSMPasswords.obj" "DSP2833x_common\source\DSP2833x_CodeStartBranch.obj" "DSP2833x_common\source\DSP2833x_CpuTimers.obj" "DSP2833x_common\source\DSP2833x_DBGIER.obj" "DSP2833x_common\source\DSP2833x_DMA.obj" "DSP2833x_common\source\DSP2833x_DefaultIsr.obj" "DSP2833x_common\source\DSP2833x_DisInt.obj" "DSP2833x_common\source\DSP2833x_ECan.obj" "DSP2833x_common\source\DSP2833x_ECap.obj" "DSP2833x_common\source\DSP2833x_EPwm.obj" "DSP2833x_common\source\DSP2833x_EQep.obj" "DSP2833x_common\source\DSP2833x_Gpio.obj" "DSP2833x_common\source\DSP2833x_I2C.obj" "DSP2833x_common\source\DSP2833x_Mcbsp.obj" "DSP2833x_common\source\DSP2833x_MemCopy.obj" "DSP2833x_common\source\DSP2833x_PieCtrl.obj" 
+	-$(RM) "DSP2833x_common\source\DSP2833x_PieVect.obj" "DSP2833x_common\source\DSP2833x_Sci.obj" "DSP2833x_common\source\DSP2833x_Spi.obj" "DSP2833x_common\source\DSP2833x_SysCtrl.obj" "DSP2833x_common\source\DSP2833x_Xintf.obj" "DSP2833x_common\source\DSP2833x_usDelay.obj" "DSP2833x_headers\source\DSP2833x_GlobalVariableDefs.obj" 
+	-$(RM) "main.d" "APP\LED\LED.d" "APP\MPU6050\eMPL\inv_mpu.d" "APP\MPU6050\eMPL\inv_mpu_dmp_motion_driver.d" "APP\MPU6050\mpu6050.d" "APP\MPU6050\mpuiic.d" "APP\Public\public.d" "APP\SPIOLED\SPIOLED.d" "DSP2833x_common\source\DSP2833x_Adc.d" "DSP2833x_common\source\DSP2833x_CpuTimers.d" "DSP2833x_common\source\DSP2833x_DMA.d" "DSP2833x_common\source\DSP2833x_DefaultIsr.d" "DSP2833x_common\source\DSP2833x_ECan.d" "DSP2833x_common\source\DSP2833x_ECap.d" "DSP2833x_common\source\DSP2833x_EPwm.d" "DSP2833x_common\source\DSP2833x_EQep.d" "DSP2833x_common\source\DSP2833x_Gpio.d" "DSP2833x_common\source\DSP2833x_I2C.d" "DSP2833x_common\source\DSP2833x_Mcbsp.d" "DSP2833x_common\source\DSP2833x_MemCopy.d" "DSP2833x_common\source\DSP2833x_PieCtrl.d" "DSP2833x_common\source\DSP2833x_PieVect.d" "DSP2833x_common\source\DSP2833x_Sci.d" "DSP2833x_common\source\DSP2833x_Spi.d" "DSP2833x_common\source\DSP2833x_SysCtrl.d" "DSP2833x_common\source\DSP2833x_Xintf.d" "DSP2833x_headers\source\DSP2833x_GlobalVariableDefs.d" 
 	-$(RM) "DSP2833x_common\source\DSP2833x_ADC_cal.d" "DSP2833x_common\source\DSP2833x_CSMPasswords.d" "DSP2833x_common\source\DSP2833x_CodeStartBranch.d" "DSP2833x_common\source\DSP2833x_DBGIER.d" "DSP2833x_common\source\DSP2833x_DisInt.d" "DSP2833x_common\source\DSP2833x_usDelay.d" 
 	-@echo 'Finished clean'
 	-@echo ' '

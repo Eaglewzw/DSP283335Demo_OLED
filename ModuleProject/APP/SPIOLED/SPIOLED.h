@@ -61,11 +61,6 @@ void OLED_Write_IIC_Byte(unsigned char IIC_Byte);
 void OLED_fuhao_write(unsigned char x,unsigned char y,unsigned char asc);
 void OLED_Num_write(unsigned char x,unsigned char y,unsigned char asc) ;
 void OLED_Float(unsigned char Y,unsigned char X,double real,unsigned char N);
-void OLED_Float2(unsigned char Y,unsigned char X,double real,unsigned char N1,unsigned char N2);
-void OLED_Num2(unsigned char x,unsigned char y, int number);
-void OLED_Num3(unsigned char x,unsigned char y,int number);
-void OLED_Num4(unsigned char x,unsigned char y, int number);
-void OLED_Num5(unsigned char x,unsigned char y,unsigned int number);
 void oled_show(void);
 void oled_first_show(void);
 

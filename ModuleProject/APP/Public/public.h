@@ -15,9 +15,11 @@
 
 #define  u8 unsigned char
 #define  u32 unsigned int
+#define u16 Uint16
 
 
 void delay(Uint16 time);                    //ÑÓÊ±º¯Êý
+void delay_ms(unsigned int nDelay);
 
 
 #endif /* APP_PUBLIC_PUBLIC_H_ */

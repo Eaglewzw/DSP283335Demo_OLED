@@ -316,111 +316,7 @@ void OLED_Float(unsigned char Y,unsigned char X,double real,unsigned char N)
    OLED_ShowString(X,Y,&n[5-i_Count],12);
 }
 
- void OLED_Float2(unsigned char Y,unsigned char X,double real,unsigned char N1,unsigned char N2)
-{
-   unsigned char   i_Count=1;
-   unsigned char   n[12]={0};
-   long   j=1;
-   unsigned int   real_int=0;
-   double decimal=0;
-   unsigned int   real_decimal=0;
-   X=X*8;
-   real_int=(int)real;
-   //Dis_Num(2,0,real_int,5);
-   decimal=real-real_int;
-   real_decimal=decimal*1e4;
-   //Dis_Num(2,6,real_decimal,4);
-   while(real_int/10/j!=0)
-   {
-      j=j*10;i_Count++;
-   }
-   n[0]=(real_int/10000)%10;
-   n[1]=(real_int/1000)%10;
-   n[2]=(real_int/100)%10;
-   n[3]=(real_int/10)%10;
 
-   n[5]='.';
-   n[6]=(real_decimal/1000)%10;
-   n[7]=(real_decimal/100)%10;
-   n[8]=(real_decimal/10)%10;
-   n[9]=real_decimal%10;
-   n[6+N2]='\0';
-   for(j=0;j<10;j++) n[j]=n[j]+16+32;
-   n[5]='.';
-   n[6+N2]='\0';
-   OLED_ShowString(X,Y,&n[5-N1],12);
-}
-
-  void OLED_Num2(unsigned char x,unsigned char y, int number)
-{
-        unsigned char shi,ge;
-          int num =number;
-    if(num<0)
-    {
-        num=-num;
-        shi=num%100/10;
-    ge=num%10;
-      OLED_fuhao_write(x,y,13);
-    OLED_Num_write(x+1,y,shi);
-    OLED_Num_write(x+2,y,ge);
-  }
-  else
-    {
-
-        shi=num%100/10;
-    ge=num%10;
-        OLED_fuhao_write(x,y,11);
-    OLED_Num_write(x+1,y,shi);
-    OLED_Num_write(x+2,y,ge);
-  }
-
-}
-
-void OLED_Num3(unsigned char x,unsigned char y,int number)
-{
-  unsigned char ge,shi,bai;
-    int num =number;
-    if(num<0)
-    {
-            num=-num;
-            OLED_fuhao_write(x,y,13); //显示-号
-        ge = num %10;
-        shi = num/10%10;
-        bai = num/100;
-        OLED_Num_write(x+3,y,ge);
-        OLED_Num_write(x+2,y,shi);
-        OLED_Num_write(x+1,y,bai);
-    }
-    else
-    {
-       OLED_fuhao_write(x,y,11);
-        ge = num %10;
-        shi = num/10 %10;
-        bai = num/100;
-        OLED_Num_write(x+3,y,ge);
-        OLED_Num_write(x+2,y,shi);
-        OLED_Num_write(x+1,y,bai);
-  }
-}
-
-void OLED_Num4(unsigned char x,unsigned char y, int number)
-{
-    unsigned char qian,bai,shi,ge;
-    int num =number;
-    if(num<0)
-    {
-        num=-num;
-    }
-    qian=num/1000;
-    bai=num%1000/100;
-    shi=num%100/10;
-    ge=num%10;
-
-    OLED_Num_write(x,y,qian);
-    OLED_Num_write(x+1,y,bai);
-    OLED_Num_write(x+2,y,shi);
-    OLED_Num_write(x+3,y,ge);
-}
 
 void OLED_Num_write(unsigned char x,unsigned char y,unsigned char asc)
 {
@@ -443,20 +339,6 @@ void OLED_fuhao_write(unsigned char x,unsigned char y,unsigned char asc)
 
 }
 
-void OLED_Num5(unsigned char x,unsigned char y,unsigned int number)
-{
-        unsigned char wan,qian,bai,shi,ge;
-        wan=number/10000;
-            qian = number%10000/1000;
-        bai=number%1000/100;
-        shi=number%100/10;
-        ge=number%10;
-        OLED_Num_write(x,y,wan);
-        OLED_Num_write(x+1,y,qian);
-        OLED_Num_write(x+2,y,bai);
-        OLED_Num_write(x+3,y,shi);
-            OLED_Num_write(x+4,y,ge);
-}
 
 //初始化SSD1306
 void OLED_Init(void)
@@ -474,26 +356,24 @@ void OLED_Init(void)
     GpioCtrlRegs.GPAQSEL1.bit.GPIO15 = 3;   // 不同步
 
     GpioCtrlRegs.GPAPUD.bit.GPIO16 = 0;     //上拉
-      GpioCtrlRegs.GPADIR.bit.GPIO16 = 1;     // 输出端口
-      GpioCtrlRegs.GPAMUX2.bit.GPIO16 = 0;    // IO口
-      GpioCtrlRegs.GPAQSEL2.bit.GPIO16 = 3;   // 不同步
+    GpioCtrlRegs.GPADIR.bit.GPIO16 = 1;     // 输出端口
+    GpioCtrlRegs.GPAMUX2.bit.GPIO16 = 0;    // IO口
+    GpioCtrlRegs.GPAQSEL2.bit.GPIO16 = 3;   // 不同步
 
-      GpioCtrlRegs.GPAPUD.bit.GPIO17 = 0;     //上拉
-      GpioCtrlRegs.GPADIR.bit.GPIO17 = 1;     // 输出端口
-      GpioCtrlRegs.GPAMUX2.bit.GPIO17 = 0;    // IO口
-      GpioCtrlRegs.GPAQSEL2.bit.GPIO17 = 3;   // 不同步
+    GpioCtrlRegs.GPAPUD.bit.GPIO17 = 0;     //上拉
+    GpioCtrlRegs.GPADIR.bit.GPIO17 = 1;     // 输出端口
+    GpioCtrlRegs.GPAMUX2.bit.GPIO17 = 0;    // IO口
+    GpioCtrlRegs.GPAQSEL2.bit.GPIO17 = 3;   // 不同步
     EDIS;
 
     LCD_SCL_SET();
     LCD_RST_CLR();
+
     DELAY_US(500);//初始化之前的延时很重要！
     DELAY_US(500);//初始化之前的延时很重要！
     DELAY_US(500);//初始化之前的延时很重要！
     DELAY_US(500);//初始化之前的延时很重要！
     DELAY_US(500);//初始化之前的延时很重要！
-       DELAY_US(500);//初始化之前的延时很重要！
-       DELAY_US(500);//初始化之前的延时很重要！
-          DELAY_US(500);//初始化之前的延时很重要！
     LCD_RST_SET();
 
 
@@ -535,10 +415,15 @@ void OLED_Init(void)
 ///开机显示需要显示的，只需要显示一次即可。减少CPU的运算。/////////////////
 void oled_first_show(void)
 {
-    OLED_ShowString(0,0,"ANGLE:",12);
+
+    /*OLED_ShowString(0,0,"ANGLE:",12);
     OLED_ShowString(0,2,"BAT :",12);
     OLED_ShowString(90,2,"V",12);
-    OLED_ShowString(0,4,"Distance:",12);
+    OLED_ShowString(0,4,"Distance:",12);*/
+    OLED_ShowString(0,0," Temp:    . C",12);
+    OLED_ShowString(0,2,"Pitch:    . C",12);
+    OLED_ShowString(0,4," Roll:    . C",12);
+    OLED_ShowString(0,6," Yaw :    . C",12);
 
 }
 
