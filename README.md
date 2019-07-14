@@ -6,7 +6,7 @@
 * LED和public是一些简单的文件
 * IIC用的是(模拟)GPIOA14/15
 * SPIO用的是(模拟)GPIOA14/15/16/17
-* MPU6050主要是（模拟GPIOA10/11/12
+* MPU6050主要是（模拟)GPIOA10/11/12
 
 效果图：
 # IIC
