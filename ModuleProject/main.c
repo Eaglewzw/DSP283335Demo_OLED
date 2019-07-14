@@ -39,42 +39,45 @@ void main(void)
 //        delay_ms(266);
 //        GpioDataRegs.GPCDAT.bit.GPIO75=0;
 //        delay_ms(266);
+
           if(temp<0)
           {
              temp=-temp;
-             OLED_fuhao_write(50,0,13);
-          }else OLED_fuhao_write(50,0,11);
-          OLED_ShowNumber(53,0,temp/100,3,12);
-          OLED_Num_write(57,0,temp%10);
+
+             OLED_fuhao_write(51,0,13);
+          }else OLED_fuhao_write(51,0,11);
+          OLED_ShowNumber(60,0,temp/100,3,12);
+          OLED_ShowNumber(88,0,temp%10,1,12);
+
 
          temp=pitch*10;
          if(temp<0)
          {
              temp=-temp;
-             OLED_fuhao_write(50,2,13);
+             OLED_fuhao_write(51,2,13);
 
-          }else OLED_fuhao_write(50,2,11);
-          OLED_ShowNumber(53,2,temp/100,3,12);
-          OLED_Num_write(57,2,temp%10);
+          }else OLED_fuhao_write(51,2,11);
+          OLED_ShowNumber(60,2,temp/10,3,12);
+          OLED_ShowNumber(88,2,temp%10,1,12);
 
          temp=roll*10;
          if(temp<0)
          {
              temp=-temp;
-             OLED_fuhao_write(50,4,13);
+             OLED_fuhao_write(51,4,13);
 
-          }else OLED_fuhao_write(50,4,11);
-              OLED_ShowNumber(53,4,temp/100,3,12);
-              OLED_Num_write(57,4,temp%10);
+          }else OLED_fuhao_write(51,4,11);
+              OLED_ShowNumber(60,4,temp/10,3,12);
+              OLED_ShowNumber(88,4,temp%10,1,12);
 
          temp=yaw*10;
          if(temp<0)
          {
              temp=-temp;
-             OLED_fuhao_write(50,6,13);
-          }else OLED_fuhao_write(50,6,11);
-          OLED_ShowNumber(53,6,temp/100,3,12);
-          OLED_Num_write(57,6,temp%10);
+             OLED_fuhao_write(51,6,13);
+          }else OLED_fuhao_write(51,6,11);
+          OLED_ShowNumber(60,6,temp/10,3,12);
+          OLED_ShowNumber(88,6,temp%10,1,12);
           }
     }
 }
